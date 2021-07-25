@@ -1,4 +1,5 @@
 const readlineSync = require("readline-sync");
+let chalk  = require('chalk');
 
 let score = 0;
 
@@ -46,19 +47,19 @@ function play(question, answer) {
   var userAnswer = readlineSync.question(question);
 
   if (userAnswer.toLowerCase() === answer.toLowerCase()) {
-    console.log("You are right!");
+    console.log(chalk.green("You are right!"));
     score++;
     
   } else {
-    console.log("You are wrong!");   
+    console.log(chalk.red("You are wrong!"));   
   }
 
-  console.log("current score: ", score);
-  console.log("-------------")
+  console.log("\ncurrent score: ", score);
+  console.log("-------------\n");
 }
 
 for (let i=0; i<questions.length; i++) {
-    play(questions[i].question, questions[i].answer)
+    play(questions[i].question, questions[i].answer);
   }
 
 
@@ -67,8 +68,10 @@ for (let i=0; i<questions.length; i++) {
   console.log("High scores:");
 
   for(let i = 0; i < highScores.length; i++){
-    console.log(highScores[i].name +": " + highScores[i].score)
+    console.log(highScores[i].name +": " + highScores[i].score);
   }
 
+  console.log("\n");
 
-  console.log("If you have beaten the high score, send me  ascreenshot of your score, I will update it")
+
+  console.log(chalk.cyanBright("If you have beaten the high score, send me  ascreenshot of your score, I will update it"));
